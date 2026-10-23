@@ -1,0 +1,37 @@
+[package]
+name = "keep-awake"
+version = "0.1.0"
+edition = "2024"
+description = "Не даёт Mac уснуть, даже с закрытой крышкой: CLI и иконка в менюбаре"
+repository = "https://github.com/pers0na2dev/keep-awake"
+readme = "README.md"
+keywords = ["macos", "sleep", "caffeinate", "menubar", "lid"]
+categories = ["command-line-utilities"]
+
+[dependencies]
+clap = { version = "4.6.7", features = ["derive"] }
+ctrlc = { version = "3.5.2", features = ["termination"] }
+objc2 = "0.6.5"
+objc2-app-kit = { version = "0.3.2", default-features = false, features = [
+    "std",
+    "objc2-core-foundation",
+    "NSAlert",
+    "NSApplication",
+    "NSButton",
+    "NSCell",
+    "NSControl",
+    "NSImage",
+    "NSMenu",
+    "NSMenuItem",
+    "NSResponder",
+    "NSRunningApplication",
+    "NSStatusBar",
+    "NSStatusBarButton",
+    "NSStatusItem",
+    "NSView",
+] }
+objc2-foundation = { version = "0.3.2", default-features = false, features = ["std", "NSNotification", "NSObject", "NSString"] }
+
+[profile.release]
+lto = true
+strip = true
